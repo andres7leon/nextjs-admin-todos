@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { IoTrashOutline } from "react-icons/io5";
-// import { createTodo, removeTodo } from "../helpers/todos";
+import { createTodo, removeTodo } from "../helpers/todos";
 import { useRouter } from "next/navigation";
 import { addTodo, deleteCompletedAction } from "../actions/todo-actions";
 
@@ -17,9 +17,11 @@ export const NewTodo = () => {
     if ( description.trim() === '') return;
     // await createTodo(description);
 
-    await addTodo(description);
-    // router.refresh();
+    // await addTodo(description); for action
     // setDescription('');
+    
+    await createTodo(description)
+    router.refresh();
   }
 
   const deleteCompleted = async() => {
